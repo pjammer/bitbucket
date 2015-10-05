@@ -83,7 +83,7 @@ module BitBucket
       assert_valid_values(VALID_ISSUE_PARAM_VALUES, params)
 
       response = get_request("/1.0/repositories/#{user}/#{repo.downcase}/issues", params)
-      return response.issues unless block_given?
+      return response unless block_given?
       response.issues.each { |el| yield el }
     end
 
